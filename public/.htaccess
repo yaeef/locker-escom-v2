@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+  Options -Multiviews
+  RewriteEngine On
+  RewriteBase /
+  
+  # Esto evita que busque carpetas o archivos físicos si no existen
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  
+  # Esto redirige TODO a index.php para que el MVC funcione
+  RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule>
